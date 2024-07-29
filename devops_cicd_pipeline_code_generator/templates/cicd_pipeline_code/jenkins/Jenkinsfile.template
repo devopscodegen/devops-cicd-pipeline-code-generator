@@ -1,0 +1,117 @@
+pipeline {
+  agent {
+    kubernetes {
+      cloud 'kubernetes'
+      yaml '''
+        spec:
+          volumes:
+          - name: maven-repo
+            persistentVolumeClaim:
+              claimName: maven-repo
+          - name: varlibcontainers
+          containers:
+          - name: maven-3-openjdk-18
+            image: maven:3-openjdk-18
+            command:
+            - sleep
+            args:
+            - 1d
+            volumeMounts:
+            - mountPath: "/root/.m2/repository"
+              name: "maven-repo"
+              readOnly: false
+          - name: terraform
+            image: hashicorp/terraform
+            command:
+            - sleep
+            args:
+            - 1d
+          - name: packer
+            image: hashicorp/packer
+            command:
+            - sleep
+            args:
+            - 1d
+          - name: helm
+            image: alpine/helm
+            command:
+            - sleep
+            args:
+            - 1d
+          - name: liquibase
+            image: liquibase/liquibase
+            command:
+            - sleep
+            args:
+            - 1d
+          - name: buildah
+            image: quay.io/buildah/upstream
+            command:
+            - sleep
+            args:
+            - 1d
+            tty: true
+            securityContext:
+              privileged: true
+            volumeMounts:
+              - name: varlibcontainers
+                mountPath: /var/lib/containers
+          imagePullSecrets:
+          - name: image-pull-secret
+      '''
+    }
+  }
+  options {
+    ansiColor('xterm')
+    buildDiscarder(logRotator(numToKeepStr: '5'))
+    disableConcurrentBuilds()
+    durabilityHint('PERFORMANCE_OPTIMIZED')
+    quietPeriod(0)
+    skipDefaultCheckout()
+    skipStagesAfterUnstable()
+    timeout(time: 120, unit: 'MINUTES')
+    timestamps()
+  }
+  parameters {
+    string(name: 'major_version_number', defaultValue: '')
+    string(name: 'minor_version_number', defaultValue: '')
+    string(name: 'patch_version_number', defaultValue: '')
+    string(name: 'phase', defaultValue: 'deploy')
+  }
+  stages {
+    stage('XXX') {
+      options {
+        timeout(time: 60, unit: 'MINUTES')
+      }
+      when {
+        expression {
+          currentBuild.result == null
+        }
+      }
+      steps {
+        catchError(stageResult: 'UNSTABLE') {
+          script {
+          }
+        }
+      }
+    }
+  }
+  post {
+    always {
+      echo "TODO"
+      echo 'Update JIRA Issue. Send Notification via email,sms,etc.'
+    }
+    success {
+      script {
+        echo "TODO"
+        echo "Success"
+      }
+    }
+    cleanup {
+      script {
+        echo "TODO"
+        echo "Success"
+      }
+    }
+  }
+}
