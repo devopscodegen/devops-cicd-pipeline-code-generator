@@ -41,7 +41,6 @@
 
 # Container file security and compliance scanning ( Pre-build test ) ( Security scan )
 - Checkov
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
 <br><br>
 
@@ -55,7 +54,6 @@
 - Run the test code to verify that individual functions and methods of classes, components or modules of the Application source code are performing according to expectations. 
 - These tests are fast-running tests with zero dependencies on external systems returning results in seconds. 
 - Examples of unit testing frameworks include but are not limited to JUnit, Jest, and pytest. 
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Package
@@ -75,7 +73,6 @@
 - These tools also require a software bill of materials (SBOM) exist. 
 - Example SCA tools include but are not limited to Dependabot, Snyk, Blackduck, OWASP Dependency Check
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Secrets scanning ( Post-package test ) ( Security scan )
@@ -83,7 +80,6 @@
 - Examples of secret detection tools include but are not limited to GitGuardian, gitleaks, Yelp Detect Secrets, AWS Git Secrets
 - Secrets scanning should be part of pre-commit and so secrets should not be committed to local repository and/or pushed to remote repository.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Static application security testing (SAST) ( Post-package test ) ( Security scan )
@@ -94,38 +90,33 @@
 
 # Infrastructure code security and compliance scanning ( Post-package test ) ( Security scan )
 - tfsec(trivy) for Terraform, trivy(cfsec) for CloudFormation, Checkov for Terraform, Helm Charts, Cloudformation, Azure Resource Manager, Serverless Framework, Kubernetes, Docker
+- Policy as code
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Container image and other build artifacts security scanning ( Post-package test ) ( Security scan )
 - trivy for containers
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Anti-virus Scanning ( Post-package test ) ( Security scan )
 - ClamAV
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Static code analysis ( Post-package test )
 - Run various automated static analysis tools that generate reports on readability, maintainability, code quality, coding standards, code coverage, and other aspects according to the team and/or organization’s best practices. 
 - Examples of tools to measure code quality include but are not limited to SonarQube, black, ESLint, Amazon CodeGuru.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Database changes quality checks ( Post-package test )
 - Liquibase 
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Push Artifacts
 - Examples of artifact repositories include but are not limited to Nexus, JFrog Artifactory, AWS CodeArtifact, Amazon ECR.
 - When artifacts are published to Artifact repository tools like Sonatype nexus, jfrog artifactory, etc. they can run security scans like SCA and reject the publish if the security scans fail.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-- Testing and security scanning results should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
 <br><br>
 
 # Deploy and test in simulated testing environment
@@ -153,7 +144,8 @@
     - Run dynamic application security testing in parallel to simulated testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
         - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
-    - Run monitoring and logging testing in parallel to simulated testing
+    - Run observability testing in parallel to simulated testing
+        - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
         - The thresholds for metric alarms should be defined in the Infrastructure Source Code and deployed along with the rest of the infrastructure in an environment. 
         - Ideally, deployments should be automatically failed and rolled back when error thresholds are breached.
@@ -187,7 +179,8 @@
     - Run dynamic application security testing in parallel to synthetic or end to end testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
         - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
-    - Run monitoring and logging testing in parallel to synthetic or end to end testing
+    - Run observability testing in parallel to synthetic or end to end testing
+        - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
         - The thresholds for metric alarms should be defined in the Infrastructure Source Code and deployed along with the rest of the infrastructure in an environment. 
         - Ideally, deployments should be automatically failed and rolled back when error thresholds are breached.
@@ -226,7 +219,8 @@
     - Run dynamic application security testing in parallel to synthetic or end to end testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
         - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
-    - Run monitoring and logging testing in parallel to synthetic or end to end testing
+    - Run observability testing in parallel to synthetic or end to end testing
+        - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
         - The thresholds for metric alarms should be defined in the Infrastructure Source Code and deployed along with the rest of the infrastructure in an environment. 
         - Ideally, deployments should be automatically failed and rolled back when error thresholds are breached.
@@ -238,7 +232,8 @@
     - Run dynamic application security testing in parallel to performance testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
         - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
-    - Run monitoring and logging testing in parallel to performance testing
+    - Run observability testing in parallel to performance testing
+        - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
         - The thresholds for metric alarms should be defined in the Infrastructure Source Code and deployed along with the rest of the infrastructure in an environment. 
         - Ideally, deployments should be automatically failed and rolled back when error thresholds are breached.
@@ -250,7 +245,8 @@
     - Run dynamic application security testing in parallel to resilience testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
         - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
-    - Run monitoring and logging testing in parallel to resilience testing
+    - Run observability testing in parallel to resilience testing
+        - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
         - The thresholds for metric alarms should be defined in the Infrastructure Source Code and deployed along with the rest of the infrastructure in an environment. 
         - Ideally, deployments should be automatically failed and rolled back when error thresholds are breached.
@@ -284,7 +280,15 @@
     - Deploy application component code
         - Examples of tools to deploy application component code include but are not limited to AWS CodeDeploy, Octopus Deploy, and Spinnaker.
 - Synthetic / End to end testing journeys
+    - Synthetic Tests run continuously in the background in a given environment to generate traffic and verify the system is healthy.   
+        - These tests serve two purposes: 
+            - Ensure there is always adequate traffic in the environment to trigger alarms if a deployment is unhealthy
+            - Test specific workflows and assert that the system is functioning correctly. 
+        - Examples of tools that can be used for synthetic tests include but are not limited to Amazon CloudWatch Synthetics,Dynatrace Synthetic Monitoring, and Datadog Synthetic Monitoring.
     - Run dynamic application security testing in parallel to synthetic or end to end testing
+        - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
+        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+- Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
 - Deployed infrastructure security and compliance scanning
 - In case of failures, rollback and create problem issue
     - Examples of automated rollback include AWS CloudFormation monitor & rollback, AWS CodeDeploy rollback and Flagger.
