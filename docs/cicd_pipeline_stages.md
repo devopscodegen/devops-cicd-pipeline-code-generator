@@ -1,11 +1,9 @@
 # Features to be implemented
 - WHERE DO WE KEEP END TO END, PERFORMANCE, SYNTHETIC AND RESILIENCE TESTING CODE SINCE ALL OF THIS CODE IS FOR ENTIRE APPLICATION OR ORGANIZATIONAL UNIT***
     - Maybe an application component with the name of the application and one with the name of the organizational unit will have all devops and testing code related to them.
-    - Add demobank application. It has 7 backend application components which use rest api, microservice and hexagonal architecture with domain driven design. It has 1 frontend application component.
 - Add CODEOWNERS for securing devops and tests directories
 - Add precommit to example bank organization application components source code repositories.
 - Add merge issues created for merge of a release branch tag to next release branch in the branching demo.
-- Change all license to Sagar Velankar
 - mkdocs
 - opentelemetry
 <br><br>
@@ -96,6 +94,7 @@
 # Build
 - Convert code into artifacts that can be promoted through environments. 
 - Compile the code
+- Lint the code
 - Examples include but are not limited to Maven, Npm, tsc, Poetry, Msbuild.
 <br><br>
 
@@ -154,7 +153,7 @@
 <br><br>
 
 # Static code analysis ( Post-package test )
-- Run various automated static analysis tools that generate reports on readability, maintainability, code quality, coding standards, code coverage, and other aspects according to the team and/or organization’s best practices. 
+- Run various automated static analysis tools that generate reports on bugs, readability, maintainability, code quality, coding standards, code coverage, and other aspects according to the team and/or organization’s best practices. 
 - Examples of tools to measure code quality include but are not limited to SonarQube, black, ESLint, Amazon CodeGuru.
 <br><br>
 
@@ -193,9 +192,9 @@
 - Component testing
     - Tests may come in the form of behavior-driven tests, automated acceptance tests, or automated tests linked to requirements and/or stories in a tracking system.
     - Examples of tools to define integration tests include but are not limited to Cucumber, vRest, and SoapUI.
-    - Run dynamic application security testing in parallel to component testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to component testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
     - Run observability testing in parallel to component testing
         - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
@@ -236,9 +235,9 @@
             - Ensure there is always adequate traffic in the environment to trigger alarms if a deployment is unhealthy
             - Test specific workflows and assert that the system is functioning correctly. 
         - Examples of tools that can be used for synthetic tests include but are not limited to Amazon CloudWatch Synthetics,Dynatrace Synthetic Monitoring, and Datadog Synthetic Monitoring.
-    - Run dynamic application security testing in parallel to synthetic or integration testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to synthetic or integration testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
     - Run observability testing in parallel to synthetic or integration testing
         - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
@@ -271,9 +270,9 @@
     - These tests verify the user workflow, including when performed through a UI. 
     - These tests are the slowest to run and hardest to maintain and therefore it is recommended to only have a few end-to-end tests that cover the most important application workflows.
     - Examples of tools to define end-to-end tests include but are not limited to Cypress, Selenium, and Telerik Test Studio.
-    - Run dynamic application security testing in parallel to end to end testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to end to end testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
     - Run observability testing in parallel to end to end testing
         - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
@@ -312,9 +311,9 @@
         - Ensure there is always adequate traffic in the environment to trigger alarms if a deployment is unhealthy
         - Test specific workflows and assert that the system is functioning correctly. 
     - Examples of tools that can be used for synthetic tests include but are not limited to Amazon CloudWatch Synthetics,Dynatrace Synthetic Monitoring, and Datadog Synthetic Monitoring.
-    - Run dynamic application security testing in parallel to synthetic testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to synthetic testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
     - Run observability testing in parallel to synthetic testing
         - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
@@ -325,9 +324,9 @@
     - Measure metrics such as the transaction success rates, response time and throughput. 
     - Determine if application meets performance requirements and compare metrics to past performance to look for performance degredation. 
     - Examples of tools that can be used for performance tests include but are not limited to JMeter, Locust, and Gatling.
-    - Run dynamic application security testing in parallel to performance testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to performance testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
     - Run observability testing in parallel to performance testing
         - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
@@ -338,9 +337,9 @@
     - Tests are defined as code and applied to the environment while the system is under load. 
     - The success rate, response time and throughput are measured during the periods when the failures are injected and compared to periods without the failures. Any significant deviation should fail the pipeline. 
     - Examples of tools that can be used for chaos/resilience testing include but are not limited to AWS Fault Injection Simulator, Gremlin, and ChaosToolkit.
-    - Run dynamic application security testing in parallel to resilience testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to resilience testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
     - Run observability testing in parallel to resilience testing
         - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
         - Monitor deployments across regions and fail when threshold breached. 
@@ -382,9 +381,9 @@
         - Ensure there is always adequate traffic in the environment to trigger alarms if a deployment is unhealthy
         - Test specific workflows and assert that the system is functioning correctly. 
     - Examples of tools that can be used for synthetic tests include but are not limited to Amazon CloudWatch Synthetics,Dynatrace Synthetic Monitoring, and Datadog Synthetic Monitoring.
-    - Run dynamic application security testing in parallel to synthetic testing
+    - Run dynamic application security testing (dast) or interactive application security testing (iast) in parallel to synthetic testing
         - Perform testing of web applications and APIs by running automated scans against it to identify vulnerabilities through techniques such as cross-site scripting (XSS) and SQL injection(SQLi). 
-        - Examples of tools that can be used for dynamic application security testing include but are not limited to OWASP ZAP, StackHawk, and AppScan.
+        - Examples of tools that can be used for dynamic application security testing (dast) or interactive application security testing (iast) include but are not limited to OWASP ZAP, StackHawk, and AppScan.
 - Test if metrics, logs and traces are generated and we can understand the internal state of the system by examining this telemetry data
 - Deployed infrastructure security and compliance scanning
 - In case of failures, rollback and create problem issue
