@@ -4,7 +4,7 @@
 - Add CODEOWNERS for securing devops and tests directories
 - Add precommit to example bank organization application components source code repositories.
 - Add merge issues created for merge of a release branch tag to next release branch in the branching demo.
-- mkdocs
+- mkdocs. material for mkdocs. https://squidfunk.github.io/mkdocs-material/getting-started/
 - opentelemetry
 <br><br>
 
