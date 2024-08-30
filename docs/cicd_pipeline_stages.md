@@ -1,12 +1,13 @@
 # Features to be implemented
 - WHERE DO WE KEEP END TO END, PERFORMANCE, SYNTHETIC AND RESILIENCE TESTING CODE SINCE ALL OF THIS CODE IS FOR ENTIRE APPLICATION OR ORGANIZATIONAL UNIT***
     - Maybe an application component with the name of the application and one with the name of the organizational unit will have all devops and testing code related to them.
-- Add CODEOWNERS for securing devops and tests directories
+    - examplebank/orgunit00-app00
+    - app00 application of orgunit00 organizational unit of example-bank organisation
 - Add precommit to example bank organization application components source code repositories.
 - Add merge issues created for merge of a release branch tag to next release branch in the branching demo.
 - mkdocs. material for mkdocs. https://squidfunk.github.io/mkdocs-material/getting-started/
 - opentelemetry
-<br><br>
+<br/><br/>
 
 # Pre-commit hooks
 - pre-commit or husky
@@ -14,7 +15,7 @@
 - they should also call sonarlint
 - Identify secrets such as usernames, passwords, and access keys in code. Examples of secret detection tools include but are not limited to GitGuardian, gitleaks, Yelp Detect Secrets, AWS Git Secrets. Secrets should not be committed to local repository and/or pushed to remote repository. If hacker gets access to code repository, they could read the secrets from commit history.
 - if we change something in pre-commit we need to run unit tests again. so unit tests should be last step of pre-commit.
-<br><br>
+<br/><br/>
 
 # Trigger
 - Feature issues created for each feature to be implemented.
@@ -35,7 +36,7 @@
 - Each stage generates some outputs like test reports and security scan reports. These need to be collected and stored in a central place since the stages may run inside short lived containers. In the always stage, these test reports and security scan reports can then be uploaded or delivered to required consumers.
 
 # Pre-checkout initialize variables
-<br><br>
+<br/><br/>
 
 # Checkout
 - Application component source code
@@ -64,108 +65,108 @@
     - Examples of database source code include but are not limited to Liquibase. 
     - If the Application component source code uses a private database that no other application component accesses, then the database source code is required to be stored in the same repository as the Application component source code. This allows the Application component source code and Database source code to be updated on the same lifecycle. 
     - However, if the database is shared by multiple application components then the Database source code should be maintained in a separate repository and managed by separate pipeline. It should be noted that this is undesireable as it introduces coupling between application components.
-<br><br>
+<br/><br/>
 
 
 # Post-checkout initialize variables
-<br><br>
+<br/><br/>
 
 # Devops code build and unit tests and package ( Pre-build test )
 - Run build, unit tests and package for devops code like cicd pipeline, container image, container deployment, vm image, vm deployment, database, infrastructure, observability code.
 - Examples of tools are terratest for infrastructure code.
 - Need to download dependencies like terraform modules, cdk jars, etc.
 - If using cdk with java, need to create cdk application jar.
-<br><br>
+<br/><br/>
 
 # Devops code security scans ( Pre-build test ) ( Security scan )
 - Run security scans for devops code like cicd pipeline, container image, container deployment, vm image, vm deployment, database, infrastructure, observability
 - Examples of tools are Checkov.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
 - Policy as code
-<br><br>
+<br/><br/>
 
 # Download dependencies
 - Convert code into artifacts that can be promoted through environments. 
 - Examples include but are not limited to Maven, Npm, Pip, Poetry, Nuget.
 - Mandatory to cache the dependencies for faster build
     - Recommend to use a location outside the checked out repository.
-<br><br>
+<br/><br/>
 
 # Build
 - Convert code into artifacts that can be promoted through environments. 
 - Compile the code
 - Lint the code
 - Examples include but are not limited to Maven, Npm, tsc, Poetry, Msbuild.
-<br><br>
+<br/><br/>
 
 # Unit tests ( Post-build test )
 - Run the test code to verify that individual functions and methods of classes, components or modules of the Application source code are performing according to expectations. 
 - These tests are fast-running tests with zero dependencies on external systems returning results in seconds. 
 - Examples of unit testing frameworks include but are not limited to JUnit, Jest, and pytest. 
-<br><br>
+<br/><br/>
 
 # Package
 - While the Build Code action will package most of the relevant artifacts, there may be additional steps to automate for packaging the code artifacts. 
 - Artifacts should only be built and packaged once and then deployed to various environments to validate the artifact. Artifacts should never be rebuilt during subsequent deploy stages.
 - Packages should be signed with a digital-signature to allow deployment processes to confirm the code being deployed is from a trusted publisher and has not been altered. AWS Signer can be used to cryptographically sign code for AWS Lambda applications and AWS-supported IoT devices.
 - Get the version number from the release branch tag.
-<br><br>
+<br/><br/>
 
 # Software bill of materials (SBOM) ( Post-package test )
 - Generate a software bill of materials (SBOM) report detailing all the dependencies used. Examples of SBOM formats include SPDX and CycloneDX
 - SBOM should be published to somewhere like JIRA for updating issues and ITSM for attaching to Change Requests.
-<br><br>
+<br/><br/>
 
 # Software composition analysis (SCA) ( Post-package test ) ( Security scan )
 - Run software composition analysis (SCA) tools to find vulnerabilities to package repositories related to open source use, licensing, and security vulnerabilities. SCA tools also launch workflows to fix these vulnerabilities. 
 - These tools also require a software bill of materials (SBOM) exist. 
 - Example SCA tools include but are not limited to Dependabot, Snyk, Blackduck, OWASP Dependency Check
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Secrets scanning ( Post-package test ) ( Security scan )
 - Identify secrets such as usernames, passwords, and access keys in artifacts.
 - Examples of secret detection tools include but are not limited to GitGuardian, gitleaks, Yelp Detect Secrets, AWS Git Secrets
 - Secrets scanning should be part of pre-commit and so secrets should not be committed to local repository and/or pushed to remote repository.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Static application security testing (SAST) ( Post-package test ) ( Security scan )
 - Analyze code for application security violations such as XML External Entity Processing, SQL Injection, and Cross Site Scripting. 
 - Examples of tools to perform static application security testing include but are not limited to SonarQube, Checkmarx and Amazon CodeGuru.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Infrastructure code security and compliance scanning ( Post-package test ) ( Security scan )
 - tfsec(trivy) for Terraform, trivy(cfsec) for CloudFormation, Checkov for Terraform, Helm Charts, Cloudformation, Azure Resource Manager, Serverless Framework, Kubernetes, Docker
 - Policy as code
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Container image and other build artifacts security scanning ( Post-package test ) ( Security scan )
 - trivy for containers
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Anti-virus Scanning ( Post-package test ) ( Security scan )
 - ClamAV
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Static code analysis ( Post-package test )
 - Run various automated static analysis tools that generate reports on bugs, readability, maintainability, code quality, coding standards, code coverage, and other aspects according to the team and/or organization’s best practices. 
 - Examples of tools to measure code quality include but are not limited to SonarQube, black, ESLint, Amazon CodeGuru.
-<br><br>
+<br/><br/>
 
 # Database changes quality checks ( Post-package test )
 - Liquibase 
-<br><br>
+<br/><br/>
 
 # Push Artifacts
 - Examples of artifact repositories include but are not limited to Nexus, JFrog Artifactory, AWS CodeArtifact, Amazon ECR.
 - When artifacts are published to Artifact repository tools like Sonatype nexus, jfrog artifactory, etc. they can run security scans like SCA and reject the publish if the security scans fail.
 - It is recommended to use security platform like Checkmarx or Veracode for security scans and only use better tool if available.
-<br><br>
+<br/><br/>
 
 # Deploy and test in component testing environment
 - Producer/Upstream application components are simulated.
@@ -201,7 +202,7 @@
         - The thresholds for metric alarms should be defined in the Infrastructure Source Code and deployed along with the rest of the infrastructure in an environment. 
         - Ideally, deployments should be automatically failed and rolled back when error thresholds are breached.
 - Destroy consumer/downstream application component component testing environment kubernetes namespace or cloud account
-<br><br>
+<br/><br/>
 
 # Deploy and test in integration testing environment
 - Producer/Upstream application components are real.
@@ -246,7 +247,7 @@
 - In case of failures, rollback and create bug issue
     - Examples of automated rollback include AWS CloudFormation monitor & rollback, AWS CodeDeploy rollback and Flagger.
     - Retest to ensure rollback is successful.
-<br><br>
+<br/><br/>
 
 # Deploy and test in end to end testing environment
 - All application components of the application are tested. Journeys are used for testing.
@@ -281,7 +282,7 @@
 - In case of failures, rollback and create bug issue
     - Examples of automated rollback include AWS CloudFormation monitor & rollback, AWS CodeDeploy rollback and Flagger.
     - Retest to ensure rollback is successful.
-<br><br>
+<br/><br/>
 
 # Deploy and test in performance testing environment
 - All application components of the application are performance and resilience tested. Journeys are used for testing.
@@ -348,14 +349,14 @@
 - In case of failures, rollback and create bug issue
     - Examples of automated rollback include AWS CloudFormation monitor & rollback, AWS CodeDeploy rollback and Flagger.
     - Retest to ensure rollback is successful.
-<br><br>
+<br/><br/>
 
 # Create release OR
 - Pull artifacts
 - Manual approval
     - As part of an automated workflow, obtain authorized human approval.
     - Need to provide RFC and change request number
-<br><br>
+<br/><br/>
 
 # OR Deploy to production environment
 - Pull artifacts
@@ -388,7 +389,7 @@
 - Deployed infrastructure security and compliance scanning
 - In case of failures, rollback and create problem issue
     - Examples of automated rollback include AWS CloudFormation monitor & rollback, AWS CodeDeploy rollback and Flagger.
-<br><br>
+<br/><br/>
 
 # Always
 - Publish testing and security scanning results to somewhere like 
@@ -397,6 +398,13 @@
     - SIEM tool for security scanning results
 - Documentation
     - Update Confluence Documentation for the Application Component/Service
+    - Confluence alternatives
+        - Wiki.js
+        - Nextra
+    - One page per organizational unit and application. On each page, we will have one folder per application component. This folder will be copied from docs folder inside application component code repository. docs folder will contain _meta.json which has information about each .mdx file.
+    - Security is important so it is better to use confluence or wiki.js
+    - Same .mdx files can be deployed to both confluence/wiki.js and nextra.
+    - .mdx is advanced Markdown format with React component support.
 - CMDB 
     - Call CMDB Webhook which will use the Infrastructure Resource Tags to update CMDB
 - Communication and Collaboration 
