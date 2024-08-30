@@ -1,0 +1,35 @@
+{
+  "name": "devops-cicd-pipeline-code-generator",
+  "version": "1.0.0",
+  "description": "DevOps CI/CD pipeline code generator",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devopscodegen/devops-cicd-pipeline-code-generator.git"
+  },
+  "author": "Sagar Velankar <sagar.velankar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/devopscodegen/devops-cicd-pipeline-code-generator/issues"
+  },
+  "homepage": "https://devopscodegen.github.io/devops-cicd-pipeline-code-generator",
+  "dependencies": {
+    "@next/third-parties": "14",
+    "next": "^14",
+    "nextra": "^2",
+    "nextra-theme-docs": "^2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5",
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "autoprefixer": "^10"
+  }
+}

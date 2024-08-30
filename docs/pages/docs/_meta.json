@@ -1,0 +1,10 @@
+{
+  "index": "Introduction",
+  "definitions": "Definitions (Glossary)",
+  "it_organizational_unit_teams": "IT organizational unit teams",
+  "branching": "Branching strategy",
+  "versioning": "Versioning strategy",
+  "continuous_testing": "Continuous testing (CT)",
+  "examplebank_design": "Example bank design",
+  "devops_domain_driven_design": "DevOps domain driven design (DDD)"
+}
