@@ -1,4 +1,12 @@
 {
+  "index": {
+    "type": "page",
+    "title": "DevOps CI/CD pipeline code generator",
+    "display": "hidden",
+    "theme": {
+      "typesetting": "article"
+    }
+  },
   "docs": {
     "type": "page",
     "title": "Documentation"

@@ -16,12 +16,5 @@ export default withNextra({
   images: {
     unoptimized: true,
   },
-  reactStrictMode: true,
-  redirects: () => [
-    {
-      source: '/',
-      destination: '/docs',
-      permanent: true
-    }
-  ]
+  reactStrictMode: true
 })
